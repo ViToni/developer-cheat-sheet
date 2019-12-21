@@ -82,3 +82,35 @@ git commit --amend --author "name <author@email.com>"
 ```{r, engine='bash', count_lines}
 git rebase -i --root
 ```
+
+## Maven
+
+### Download all dependencies before going offline
+
+```{r, engine='bash', count_lines}
+mvn dependency:go-offline
+```
+
+### Download all sources and JavaDocs for the dependencies
+
+```{r, engine='bash', count_lines}
+mvn dependency:sources dependency:resolve -Dclassifier=javadoc
+```
+
+### Using maven in offline mode
+
+```{r, engine='bash', count_lines}
+mvn -o clean build install
+```
+
+### Skipping compilation of tests
+
+```{r, engine='bash', count_lines}
+mvn install -Dmaven.test.skip=true
+```
+
+### Skipping execution of tests
+
+```{r, engine='bash', count_lines}
+mvn install -DskipTests=false
+```
